@@ -1,6 +1,9 @@
 const nav = document.querySelector(".nav"),
   menu = document.querySelector(".menu");
-menu?.addEventListener("click", () => nav.classList.toggle("open"));
+menu?.addEventListener("click", () => {
+  nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", nav.classList.contains("open") ? "true" : "false");
+});
 document
   .querySelectorAll(".nav a")
   .forEach((a) =>
@@ -110,6 +113,9 @@ const items = document.querySelectorAll(".industry-item"),
 function select(item) {
   items.forEach((x) => x.classList.remove("active"));
   item.classList.add("active");
+  if (window.matchMedia("(max-width: 600px)").matches) {
+    item.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }
   const no = item.dataset.no,
     r = references[no];
   preview.querySelector(".preview-no").textContent = no;
