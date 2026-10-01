@@ -2695,3 +2695,81 @@ button,
   }
   .campaign.c1 > * { position: relative; z-index: 1; }
 }
+
+/* V8.5 — portfolio decorative-layer alignment fix */
+.campaign { isolation: isolate; }
+.campaign > * { position: relative; z-index: 2; }
+.campaign .big,
+.campaign.c1::before { z-index: 0; pointer-events: none; -webkit-user-select: none; user-select: none; }
+.campaign.c3 .big {
+  color: rgba(7, 17, 31, .11);
+  line-height: .72;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .campaigns { gap: 16px; }
+  .campaign {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 1 / .80;
+    padding: 28px 24px;
+    justify-content: flex-end;
+  }
+  .campaign small,
+  .campaign > span,
+  .campaign .ad-label { font-size: 8px; }
+  .campaign h3 { margin: 12px 0 18px; }
+
+  /* Brand Refresh: decorative A stays behind and away from copy. */
+  .campaign.c3 .big {
+    position: absolute;
+    top: 9%;
+    right: 4%;
+    left: auto;
+    font-size: clamp(150px, 45vw, 190px);
+    letter-spacing: -.10em;
+    transform: none;
+    color: rgba(7, 17, 31, .10);
+    z-index: 0;
+  }
+  .campaign.c3 small { align-self: flex-start; }
+  .campaign.c3 h3 {
+    font-size: clamp(40px, 11vw, 50px);
+    line-height: .92;
+    max-width: 78%;
+  }
+  .campaign.c3 p {
+    max-width: 90%;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  /* Keep the website card vertically balanced on phones. */
+  .campaign.c2 { justify-content: center; }
+  .campaign.c2 button { margin-bottom: 0; margin-top: 8px; }
+}
+
+/* V8.6 — supplied Ashee brand mark */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  line-height: 0;
+}
+.logo > img {
+  display: block;
+  width: auto;
+  height: 46px;
+  max-width: 190px;
+  object-fit: contain;
+}
+.logo.invert > img {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+@media (max-width: 600px) {
+  .logo > img {
+    height: 38px;
+    max-width: 150px;
+  }
+}
